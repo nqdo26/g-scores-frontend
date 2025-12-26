@@ -1,0 +1,120 @@
+{
+  "app": {
+    "title": "G-Scores - High School Exam Score System",
+    "description": "Check National High School Exam Scores 2024"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "checkScore": "Check Score",
+    "reports": "Score Reports",
+    "statistics": "Statistics",
+    "top10": "Top 10 Group A"
+  },
+  "checkScore": {
+    "title": "Check Exam Score",
+    "description": "Enter registration number to check exam score",
+    "placeholder": "Enter registration number (e.g., 1000001)",
+    "button": "Check",
+    "notFound": "Student not found with this registration number",
+    "error": "An error occurred while checking scores",
+    "studentNumber": "Registration Number",
+    "scores": "Subject Scores",
+    "groupA": "Group A (Math + Physics + Chemistry)",
+    "total": "Total Score",
+    "validationRequired": "Please enter registration number",
+    "validationFormat": "Registration number must be 7-8 digits",
+    "found": "Student found",
+    "scoresDescription": "Exam scores by subject",
+    "subject": "Subject",
+    "score": "Score",
+    "level": "Level",
+    "excellent": "Excellent",
+    "good": "Good",
+    "average": "Average",
+    "poor": "Poor",
+    "groupADescription": "Total score of 3 subjects: Math, Physics, Chemistry"
+  },
+  "reports": {
+    "title": "Score Reports by Subject",
+    "description": "View score distribution by 4 levels",
+    "selectSubject": "Select subject",
+    "excellent": "Excellent (≥ 8.0)",
+    "good": "Good (6.0 - 7.9)",
+    "average": "Average (4.0 - 5.9)",
+    "poor": "Poor (< 4.0)",
+    "students": "students",
+    "totalStudents": "Total Students"
+  },
+  "statistics": {
+    "title": "Subject Statistics",
+    "description": "View detailed statistics by subject",
+    "selectSubject": "Select subject",
+    "total": "Total",
+    "average": "Average Score",
+    "highest": "Highest Score",
+    "lowest": "Lowest Score",
+    "median": "Median Score",
+    "distribution": "Score Distribution",
+    "barChart": "Bar Chart",
+    "pieChart": "Pie Chart",
+    "lineChart": "Line Chart",
+    "percentage": "Percentage"
+  },
+  "top10": {
+    "title": "Top 10 Group A",
+    "description": "Top 10 students with highest total score in Math + Physics + Chemistry",
+    "infoTitle": "Group A Score",
+    "infoDescription": "Group A Score = Math + Physics + Chemistry",
+    "rank": "Rank",
+    "studentNumber": "Registration Number",
+    "math": "Math",
+    "physics": "Physics",
+    "chemistry": "Chemistry",
+    "total": "Total Score"
+  },
+  "subjects": {
+    "toan": "Math",
+    "ngu_van": "Literature",
+    "ngoai_ngu": "Foreign Language",
+    "vat_li": "Physics",
+    "hoa_hoc": "Chemistry",
+    "sinh_hoc": "Biology",
+    "lich_su": "History",
+    "dia_li": "Geography",
+    "gdcd": "Civic Education"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "language": {
+    "vietnamese": "Tiếng Việt",
+    "english": "English"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "noData": "No data available"
+  },
+  "dashboard": {
+    "title": "G-Scores Dashboard",
+    "subtitle": "High School Exam Score System 2024",
+    "welcome": "Welcome to G-Scores",
+    "systemDescription": "National High School Exam Score System 2024",
+    "userGuide": "User Guide:",
+    "checkScoreCard": "Check Score",
+    "checkScoreDesc": "Search score by registration number",
+    "reportsCard": "Reports",
+    "reportsDesc": "Analyze scores by subject",
+    "statisticsCard": "Statistics",
+    "statisticsDesc": "View detailed statistics",
+    "top10Card": "Top 10 Group A",
+    "top10Desc": "Top students leaderboard",
+    "guideCheckScore": "Enter registration number to view exam scores",
+    "guideReports": "View score distribution across 4 levels for each subject",
+    "guideStatistics": "View detailed statistics (average, highest, lowest) with charts",
+    "guideTop10": "View list of top 10 students with highest total score in Math + Physics + Chemistry"
+  }
+}

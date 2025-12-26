@@ -49,37 +49,40 @@ async function fetchAPI<T>(
  * API methods
  */
 export const api = {
-  // GET request
-  get: <T>(endpoint: string, options?: RequestInit) =>
-    fetchAPI<T>(endpoint, { ...options, method: "GET" }),
+  /**
+   * Check score by registration number (SBD)
+   * @param sbd - Student registration number
+   */
+  checkScore: (sbd: string) =>
+    fetchAPI<
+      import("./types").ApiResponse<import("./types").IScoreCheckResult>
+    >(`/api/scores/check/${sbd}`),
 
-  // POST request
-  post: <T>(endpoint: string, data?: unknown, options?: RequestInit) =>
-    fetchAPI<T>(endpoint, {
-      ...options,
-      method: "POST",
-      body: data ? JSON.stringify(data) : undefined,
-    }),
+  /**
+   * Get score report by levels for a subject
+   * @param subject - Subject code (toan, ngu_van, etc.)
+   */
+  getScoreReport: (subject: string) =>
+    fetchAPI<import("./types").ApiResponse<import("./types").IScoreReport>>(
+      `/api/scores/report/${subject}`
+    ),
 
-  // PUT request
-  put: <T>(endpoint: string, data?: unknown, options?: RequestInit) =>
-    fetchAPI<T>(endpoint, {
-      ...options,
-      method: "PUT",
-      body: data ? JSON.stringify(data) : undefined,
-    }),
+  /**
+   * Get statistics for a subject
+   * @param subject - Subject code (toan, ngu_van, etc.)
+   */
+  getStatistics: (subject: string) =>
+    fetchAPI<
+      import("./types").ApiResponse<import("./types").ISubjectStatistics>
+    >(`/api/scores/statistics/${subject}`),
 
-  // DELETE request
-  delete: <T>(endpoint: string, options?: RequestInit) =>
-    fetchAPI<T>(endpoint, { ...options, method: "DELETE" }),
-
-  // PATCH request
-  patch: <T>(endpoint: string, data?: unknown, options?: RequestInit) =>
-    fetchAPI<T>(endpoint, {
-      ...options,
-      method: "PATCH",
-      body: data ? JSON.stringify(data) : undefined,
-    }),
+  /**
+   * Get top 10 students of group A (Math, Physics, Chemistry)
+   */
+  getTop10GroupA: () =>
+    fetchAPI<import("./types").ApiResponse<import("./types").ITopStudent[]>>(
+      `/api/scores/top10/group-a`
+    ),
 };
 
 /**

@@ -9,15 +9,6 @@ export interface ApiResponse<T> {
   message?: string;
 }
 
-// Pagination
-export interface PaginatedResponse<T> {
-  data: T[];
-  total: number;
-  page: number;
-  pageSize: number;
-  totalPages: number;
-}
-
 // Error response
 export interface ApiErrorResponse {
   success: false;
@@ -27,26 +18,89 @@ export interface ApiErrorResponse {
 }
 
 /**
- * Example domain types - customize based on your backend
+ * G-Scores Project Types - Based on Backend API
  */
 
-// User type
-export interface User {
-  id: string;
-  email: string;
-  name: string;
-  createdAt: string;
-  updatedAt: string;
+// Subject scores
+export interface ISubjectScores {
+  toan?: number;
+  ngu_van?: number;
+  ngoai_ngu?: number;
+  vat_li?: number;
+  hoa_hoc?: number;
+  sinh_hoc?: number;
+  lich_su?: number;
+  dia_li?: number;
+  gdcd?: number;
+  ma_ngoai_ngu?: string;
 }
 
-// Score type (example for G-Scores project)
-export interface Score {
-  id: string;
-  userId: string;
-  score: number;
-  subject?: string;
-  date: string;
-  createdAt: string;
+// Score check result
+export interface IScoreCheckResult {
+  sbd: string;
+  scores: {
+    [key: string]: number | string | undefined;
+  };
+  groupA?: {
+    total: number | null;
+    subjects: {
+      toan?: number;
+      vat_li?: number;
+      hoa_hoc?: number;
+    };
+  };
 }
+
+// Score report by levels
+export interface IScoreReport {
+  subject: string;
+  levels: {
+    excellent: { count: number; percentage: string }; // >= 8
+    good: { count: number; percentage: string }; // >= 6 & < 8
+    average: { count: number; percentage: string }; // >= 4 & < 6
+    poor: { count: number; percentage: string }; // < 4
+  };
+  total: number;
+}
+
+// Subject statistics
+export interface ISubjectStatistics {
+  subject: string;
+  total: number;
+  average: number;
+  highest: number;
+  lowest: number;
+  median: number;
+  distribution: {
+    excellent: number; // >= 8
+    good: number; // >= 6 & < 8
+    average: number; // >= 4 & < 6
+    poor: number; // < 4
+  };
+}
+
+// Top student
+export interface ITopStudent {
+  rank: number;
+  sbd: string;
+  total: number;
+  scores: {
+    toan: number;
+    vat_li: number;
+    hoa_hoc: number;
+  };
+}
+
+// Subject options for dropdowns
+export type SubjectCode =
+  | "toan"
+  | "ngu_van"
+  | "ngoai_ngu"
+  | "vat_li"
+  | "hoa_hoc"
+  | "sinh_hoc"
+  | "lich_su"
+  | "dia_li"
+  | "gdcd";
 
 // Add more types based on your backend API models

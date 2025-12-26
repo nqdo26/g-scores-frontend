@@ -1,0 +1,120 @@
+{
+  "app": {
+    "title": "G-Scores - Hệ Thống Tra Cứu Điểm Thi THPT",
+    "description": "Tra cứu điểm thi THPT Quốc Gia 2024"
+  },
+  "nav": {
+    "dashboard": "Tổng Quan",
+    "checkScore": "Tra Cứu Điểm",
+    "reports": "Báo Cáo Điểm",
+    "statistics": "Thống Kê",
+    "top10": "Top 10 Khối A"
+  },
+  "checkScore": {
+    "title": "Tra Cứu Điểm Thi",
+    "description": "Nhập số báo danh để tra cứu điểm thi",
+    "placeholder": "Nhập số báo danh (VD: 1000001)",
+    "button": "Tra Cứu",
+    "notFound": "Không tìm thấy thí sinh với số báo danh này",
+    "error": "Có lỗi xảy ra khi tra cứu điểm",
+    "studentNumber": "Số Báo Danh",
+    "scores": "Điểm Các Môn",
+    "groupA": "Khối A (Toán + Lý + Hóa)",
+    "total": "Tổng Điểm",
+    "validationRequired": "Vui lòng nhập số báo danh",
+    "validationFormat": "Số báo danh phải gồm 7-8 chữ số",
+    "found": "Tìm thấy thí sinh",
+    "scoresDescription": "Kết quả điểm thi các môn",
+    "subject": "Môn học",
+    "score": "Điểm số",
+    "level": "Xếp loại",
+    "excellent": "Giỏi",
+    "good": "Khá",
+    "average": "Trung Bình",
+    "poor": "Yếu",
+    "groupADescription": "Tổng điểm 3 môn: Toán, Vật Lý, Hóa Học"
+  },
+  "reports": {
+    "title": "Báo Cáo Điểm Theo Môn",
+    "description": "Xem phân bố điểm theo 4 mức độ",
+    "selectSubject": "Chọn môn học",
+    "excellent": "Giỏi (≥ 8.0)",
+    "good": "Khá (6.0 - 7.9)",
+    "average": "Trung Bình (4.0 - 5.9)",
+    "poor": "Yếu (< 4.0)",
+    "students": "thí sinh",
+    "totalStudents": "Tổng Số Thí Sinh"
+  },
+  "statistics": {
+    "title": "Thống Kê Môn Học",
+    "description": "Xem thống kê chi tiết các môn học",
+    "selectSubject": "Chọn môn học",
+    "total": "Tổng Số",
+    "average": "Điểm Trung Bình",
+    "highest": "Điểm Cao Nhất",
+    "lowest": "Điểm Thấp Nhất",
+    "median": "Điểm Trung Vị",
+    "distribution": "Phân Bố Điểm",
+    "barChart": "Biểu Đồ Cột",
+    "pieChart": "Biểu Đồ Tròn",
+    "lineChart": "Biểu Đồ Đường",
+    "percentage": "Tỉ lệ"
+  },
+  "top10": {
+    "title": "Top 10 Khối A",
+    "description": "10 thí sinh có tổng điểm Toán + Lý + Hóa cao nhất",
+    "infoTitle": "Điểm khối A",
+    "infoDescription": "Tổng điểm khối A = Toán + Vật Lý + Hóa Học",
+    "rank": "Hạng",
+    "studentNumber": "Số Báo Danh",
+    "math": "Toán",
+    "physics": "Vật Lý",
+    "chemistry": "Hóa Học",
+    "total": "Tổng Điểm"
+  },
+  "subjects": {
+    "toan": "Toán",
+    "ngu_van": "Ngữ Văn",
+    "ngoai_ngu": "Ngoại Ngữ",
+    "vat_li": "Vật Lý",
+    "hoa_hoc": "Hóa Học",
+    "sinh_hoc": "Sinh Học",
+    "lich_su": "Lịch Sử",
+    "dia_li": "Địa Lý",
+    "gdcd": "GDCD"
+  },
+  "theme": {
+    "light": "Sáng",
+    "dark": "Tối",
+    "system": "Hệ Thống"
+  },
+  "language": {
+    "vietnamese": "Tiếng Việt",
+    "english": "English"
+  },
+  "common": {
+    "loading": "Đang tải...",
+    "error": "Lỗi",
+    "success": "Thành công",
+    "noData": "Không có dữ liệu"
+  },
+  "dashboard": {
+    "title": "G-Scores Dashboard",
+    "subtitle": "Hệ thống tra cứu điểm thi THPT 2024",
+    "welcome": "Chào mừng đến với G-Scores",
+    "systemDescription": "Hệ thống tra cứu điểm thi THPT Quốc Gia 2024",
+    "userGuide": "Hướng dẫn sử dụng:",
+    "checkScoreCard": "Tra Cứu Điểm",
+    "checkScoreDesc": "Tìm kiếm điểm theo SBD",
+    "reportsCard": "Báo Cáo",
+    "reportsDesc": "Phân tích điểm theo môn",
+    "statisticsCard": "Thống Kê",
+    "statisticsDesc": "Xem chi tiết thống kê",
+    "top10Card": "Top 10 Khối A",
+    "top10Desc": "Danh sách thủ khoa",
+    "guideCheckScore": "Nhập số báo danh để xem điểm các môn thi",
+    "guideReports": "Xem phân bố điểm theo 4 mức độ cho từng môn học",
+    "guideStatistics": "Xem thống kê chi tiết (điểm TB, cao nhất, thấp nhất) và biểu đồ",
+    "guideTop10": "Xem danh sách 10 thí sinh có tổng điểm Toán + Lý + Hóa cao nhất"
+  }
+}
