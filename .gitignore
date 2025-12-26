@@ -1,0 +1,215 @@
+# ========================
+# Next.js + TypeScript + React
+# Professional .gitignore
+# ========================
+
+# Dependencies
+# ========================
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-debug.log*
+lerna-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Next.js Build Output
+# ========================
+/.next/
+/out/
+/dist/
+/build/
+.next
+.swc/
+
+# Testing
+# ========================
+/coverage
+/coverage.json
+/.nyc_output
+*.lcov
+.jest-cache/
+test-results/
+playwright-report/
+/test-results/
+
+# Production
+# ========================
+/build
+*.js.map
+
+# Environment Variables
+# ========================
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+.env*.local
+
+# Logs
+# ========================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# OS Files
+# ========================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# IDE & Editors
+# ========================
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+.history/
+
+# JetBrains (WebStorm, IntelliJ IDEA, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.*.sw[a-z]
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# TypeScript
+# ========================
+*.tsbuildinfo
+next-env.d.ts
+*.d.ts.map
+
+# Temporary Files
+# ========================
+*.tmp
+*.temp
+*.bak
+*.cache
+.temp/
+.tmp/
+
+# Certificates & Keys
+# ========================
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.pfx
+
+# Vercel
+# ========================
+.vercel
+.vercel.json
+
+# Turbo
+# ========================
+.turbo
+
+# Sentry
+# ========================
+.sentryclirc
+sentry.properties
+
+# PWA
+# ========================
+**/public/workbox-*.js
+**/public/sw.js
+**/public/worker-*.js
+**/public/fallback-*.js
+
+# Storybook
+# ========================
+storybook-static/
+.storybook/build/
+
+# ESLint Cache
+# ========================
+.eslintcache
+
+# Prettier Cache
+# ========================
+.prettiercache
+
+# Husky
+# ========================
+.husky/_
+
+# GraphQL
+# ========================
+schema.graphql
+codegen.yml
+
+# Optional: Database
+# ========================
+*.db
+*.sqlite
+*.sqlite3
+
+# Optional: Docker
+# ========================
+# docker-compose.override.yml
+# .dockerignore
+
+# Optional: Lock files (uncomment if needed)
+# ========================
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Keep these files
+# ========================
+!.gitkeep
+!.env.example
+!.vscode/settings.json
