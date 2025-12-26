@@ -25,25 +25,19 @@ A modern, responsive web application built with Next.js 16, React 19, and Tailwi
 
 ## ✨ Features
 
-### Must Have Features
+### Core Features
 
-- 🔍 **Score Lookup**: Search and view exam scores by registration number
-- 📊 **Score Statistics Dashboard**: Visual reports with 4 score levels:
-  - Level 1: >= 8 points (Excellent)
-  - Level 2: 6-8 points (Good)
-  - Level 3: 4-6 points (Average)
-  - Level 4: < 4 points (Below Average)
-- 📈 **Interactive Charts**: Statistics visualization by subjects across score levels
-- 🏆 **Top 10 Leaderboard**: Display top 10 students in Group A (Math, Physics, Chemistry)
-
-### Nice to Have Features (Implemented)
-
-- ✅ **Fully Responsive Design**: Optimized for desktop, tablet, and mobile devices
-- ✅ **Dark Mode Support**: Automatic theme switching
-- ✅ **Modern UI/UX**: Clean, professional interface with Tailwind CSS
-- ✅ **Type Safety**: Full TypeScript implementation
-- ✅ **SEO Optimized**: Server-side rendering with Next.js
-- ✅ **Performance Optimized**: Next.js 16 with Turbopack
+- 🔍 **Score Lookup**: Search exam scores by registration number (7-8 digits, auto-normalized)
+- 📊 **Score Distribution Reports**: Visual reports with 4 performance levels:
+  - Excellent (Giỏi): ≥ 8 points
+  - Good (Khá): 6.5-8 points
+  - Average (Trung bình): 5-6.5 points
+  - Poor (Yếu): < 5 points
+- 📈 **Subject Statistics**: Interactive charts with bar, pie, and line visualizations
+- 🏆 **Top 10 Group A**: Leaderboard ranking by Math + Physics + Chemistry total
+- 🌍 **Internationalization**: Vietnamese (default) and English
+- 🎨 **Dark Mode**: Automatic theme switching with next-themes
+- 🔄 **Unified Loading States**: Consistent loading spinners across all pages
 
 ## 🛠 Tech Stack
 
@@ -56,10 +50,13 @@ A modern, responsive web application built with Next.js 16, React 19, and Tailwi
 
 ### UI Components & Utilities
 
+- **Component Library**: [shadcn/ui](https://ui.shadcn.com/) - Re-usable components built with Radix UI
+- **Internationalization**: [next-intl](https://next-intl-docs.vercel.app/) - Vietnamese & English support
+- **Theme Management**: [next-themes](https://github.com/pacocoursey/next-themes) - Dark mode support
+- **Charts**: [Recharts](https://recharts.org/) - Composable charting library
 - **Component Variants**: `class-variance-authority` - Type-safe component variants
 - **CSS Utilities**: `clsx` & `tailwind-merge` - Dynamic class names
 - **Icons**: `lucide-react` - Beautiful open-source icons
-- **Animations**: `tw-animate-css` - Tailwind animation utilities
 
 ### Development Tools
 
@@ -73,8 +70,8 @@ Before running this application, make sure you have:
 
 - **Node.js** >= 18.x
 - **npm** or **yarn** or **pnpm**
-- **Backend API** running at `http://localhost:5000` (or configured endpoint)
-- **Git** for version control
+- **Backend API** running at `http://localhost:5000` (see g-scores-backend README)
+- **Backend Database**: MongoDB Atlas with seeded data (1,061,605 records)
 
 ## 🚀 Installation
 
@@ -97,29 +94,20 @@ pnpm install
 
 ## ⚙️ Configuration
 
-1. **Create environment file**
+**Environment variables** (Optional):
+
+The app uses `http://localhost:5000` as default backend URL. To change it:
 
 ```bash
-cp .env.example .env
-```
-
-2. **Configure environment variables**
-
-Create a `.env.local` file (already created if following backend setup):
-
-```env
-# Backend API URL
-NEXT_PUBLIC_API_URL=http://localhost:5000
-
-# Optional: Analytics
-# NEXT_PUBLIC_GA_ID=your-google-analytics-id
+# Create .env.local file
+echo NEXT_PUBLIC_API_URL=http://localhost:5000 > .env.local
 ```
 
 **Important Notes:**
 
 - Variables prefixed with `NEXT_PUBLIC_` are exposed to the browser
 - The backend API must be running before starting the frontend
-- Default backend URL is `http://localhost:5000`
+- Default API URL is already configured in `lib/api.ts`
 
 ## 🎯 Running the Application
 
@@ -152,64 +140,110 @@ npm run lint
 ```
 g-scores-frontend/
 ├── app/                      # Next.js App Router
+│   ├── [locale]/            # Internationalized routes
+│   │   ├── layout.tsx       # Main layout with sidebar
+│   │   ├── page.tsx         # Dashboard page
+│   │   ├── check-score/     # Score lookup page
+│   │   ├── statistics/      # Statistics page
+│   │   ├── top10/           # Top 10 leaderboard
+│   │   │   └── reports/        # Score reports page
 │   ├── layout.tsx           # Root layout
-│   ├── page.tsx             # Home page
-│   └── globals.css          # Global styles
+│   └── globals.css          # Global styles with Tailwind
 ├── components/              # React components
-│   ├── ui/                 # Reusable UI components
-│   ├── features/           # Feature-specific components
-│   └── layouts/            # Layout components
+│   ├── ui/                  # shadcn/ui components
+│   │   ├── button.tsx
+│   │   ├── card.tsx
+│   │   ├── input.tsx
+│   │   ├── loading-spinner.tsx  # Unified loading component
+│   │   └── ...              # Other UI components
+│   ├── dashboard-overview.tsx
+│   ├── score-checker.tsx
+│   ├── statistics.tsx
+│   ├── top10-group-a.tsx
+│   ├── score-reports.tsx
+│   ├── sidebar.tsx
+│   └── theme-provider.tsx
 ├── lib/                     # Utility libraries
-│   ├── api.ts              # API client with fetch wrapper
-│   ├── types.ts            # TypeScript type definitions
-│   └── utils.ts            # Utility functions
+│   ├── api.ts               # API client with fetch wrapper
+│   ├── types.ts             # TypeScript type definitions
+│   └── utils.ts             # Utility functions (cn)
+├── messages/                # i18n translation files
+│   ├── vi.json              # Vietnamese translations
+│   └── en.json              # English translations
 ├── public/                  # Static assets
-│   ├── images/
-│   └── fonts/
-├── .env                     # Environment variables (gitignored)
-├── .env.example            # Environment template
-├── .gitignore              # Git ignore rules
-├── components.json         # shadcn/ui configuration
-├── next.config.ts          # Next.js configuration
-├── postcss.config.mjs      # PostCSS configuration
-├── tailwind.config.ts      # Tailwind CSS configuration
-├── tsconfig.json           # TypeScript configuration
-└── README.md              # This file
+├── components.json          # shadcn/ui configuration
+├── i18n.ts                  # next-intl configuration
+├── next.config.ts           # Next.js configuration
+├── postcss.config.mjs       # PostCSS configuration
+├── tailwind.config.ts       # Tailwind CSS configuration
+├── tsconfig.json            # TypeScript configuration
+└── README.md                # This file
 ```
 
 ## 🎨 Features Implementation
 
 ### 1. Score Lookup Feature
 
-**Location**: `app/scores/page.tsx`
+**Location**: `app/[locale]/check-score/page.tsx`  
+**Component**: `components/score-checker.tsx`
 
 ```typescript
 import { api } from "@/lib/api";
-import { Score } from "@/lib/types";
 
-const scores = await api.get<Score>(`/api/scores/${registrationNumber}`);
+// Auto-normalizes SBD (removes leading zeros)
+const result = await api.checkScore(normalizedSBD);
 ```
+
+Features:
+
+- 7-8 digit SBD validation
+- Auto-normalization (01000001 → 1000001)
+- Subject scores table with performance levels
+- Color-coded score display
 
 ### 2. Statistics Dashboard
 
-**Location**: `app/statistics/page.tsx`
+**Location**: `app/[locale]/statistics/page.tsx`  
+**Component**: `components/statistics.tsx`
 
-Displays interactive charts showing:
+Displays interactive **Recharts** visualizations:
 
-- Distribution of students across 4 score levels
-- Subject-wise performance analysis
-- Visual representation using Chart.js or Recharts
+- Bar chart: Distribution across 4 levels
+- Pie chart: Percentage breakdown
+- Line chart: Trend analysis
+- Subject-wise statistics with averages
 
-### 3. Top 10 Leaderboard
+### 3. Score Reports
 
-**Location**: `app/top10/page.tsx`
+**Location**: `app/[locale]/reports/page.tsx`  
+**Component**: `components/score-reports.tsx`
 
-Shows top 10 students in Group A with:
+Shows score distribution by subject:
 
-- Ranking position
-- Student names
-- Total scores
-- Individual subject scores (Math, Physics, Chemistry)
+- 4 performance levels with counts
+- Gradient progress bars
+- Percentage calculations
+- Interactive subject selector
+
+### 4. Top 10 Group A Leaderboard
+
+**Location**: `app/[locale]/top10/page.tsx`  
+**Component**: `components/top10-group-a.tsx`
+
+Features:
+
+- Ranking table with medal icons (🥇🥈🥉)
+- Total scores (Math + Physics + Chemistry)
+- Individual subject breakdown
+- Color-coded score badges
+
+### 5. shadcn/ui Components
+
+Installed components:
+
+- `button`, `card`, `input`, `label`, `select`, `tabs`
+- `table`, `badge`, `alert`, `dropdown-menu`, `form`
+- Custom: `loading-spinner` (unified loading states)
 
 ## 💻 Development
 
@@ -395,13 +429,6 @@ npm run build
 ## 📝 License
 
 This project is part of the **Golden Owl Web Developer Intern Assignment**.
-
-## 👨‍💻 Author
-
-**Your Name**
-
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
 
 ## 🙏 Acknowledgments
 
