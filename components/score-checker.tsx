@@ -24,7 +24,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { api } from "@/lib/api";
+import { api, ApiError } from "@/lib/api";
 import { IScoreCheckResult } from "@/lib/types";
 
 export function ScoreChecker() {
@@ -36,6 +36,7 @@ export function ScoreChecker() {
   const [loading, setLoading] = React.useState(false);
   const [result, setResult] = React.useState<IScoreCheckResult | null>(null);
   const [error, setError] = React.useState<string | null>(null);
+  const [notFound, setNotFound] = React.useState<string | null>(null);
   const [validationError, setValidationError] = React.useState<string | null>(
     null
   );
@@ -73,19 +74,22 @@ export function ScoreChecker() {
 
     setLoading(true);
     setError(null);
+    setNotFound(null);
     setResult(null);
 
     try {
-      // Remove leading zeros to match database format (01000001 -> 1000001)
-      const normalizedSBD = sbd.trim().replace(/^0+/, "") || "0";
+      // Send SBD as-is, backend will normalize with padding
+      const normalizedSBD = sbd.trim();
       const response = await api.checkScore(normalizedSBD);
       setResult(response.data);
     } catch (err) {
-      if (err instanceof Error) {
-        if (err.message.includes("404")) {
-          setError(t("notFound"));
+      if (err instanceof ApiError) {
+        // Show info message for not found, error for other cases
+        if (err.status === 404) {
+          setNotFound(t("notFound"));
         } else {
-          setError(err.message);
+          // For other errors, use generic error message
+          setError(t("error"));
         }
       } else {
         setError(t("error"));
@@ -178,6 +182,19 @@ export function ScoreChecker() {
           <XCircle className="h-4 w-4" />
           <AlertTitle>{tCommon("error")}</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
+        </Alert>
+      )}
+
+      {/* Not Found Info Alert */}
+      {notFound && (
+        <Alert className="border-amber-200 bg-amber-50 dark:bg-amber-950/20 dark:border-amber-900">
+          <AlertCircle className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+          <AlertTitle className="text-amber-900 dark:text-amber-100">
+            {t("studentNumber")}
+          </AlertTitle>
+          <AlertDescription className="text-amber-700 dark:text-amber-300">
+            {notFound}
+          </AlertDescription>
         </Alert>
       )}
 

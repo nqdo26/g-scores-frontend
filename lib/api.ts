@@ -29,7 +29,15 @@ async function fetchAPI<T>(
     });
 
     if (!response.ok) {
-      throw new ApiError(response.status, `API Error: ${response.statusText}`);
+      // Try to parse error message from JSON response
+      let errorMessage = response.statusText;
+      try {
+        const errorData = await response.json();
+        errorMessage = errorData.message || errorMessage;
+      } catch {
+        // If JSON parsing fails, use statusText
+      }
+      throw new ApiError(response.status, errorMessage);
     }
 
     return response.json();
