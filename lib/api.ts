@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
 
 /**
  * Custom error class for API errors
@@ -56,7 +56,7 @@ export const api = {
   checkScore: (sbd: string) =>
     fetchAPI<
       import("./types").ApiResponse<import("./types").IScoreCheckResult>
-    >(`/api/scores/check/${sbd}`),
+    >(`/scores/check/${sbd}`),
 
   /**
    * Get score report by levels for a subject
@@ -64,7 +64,7 @@ export const api = {
    */
   getScoreReport: (subject: string) =>
     fetchAPI<import("./types").ApiResponse<import("./types").IScoreReport>>(
-      `/api/scores/report/${subject}`
+      `/scores/report/${subject}`
     ),
 
   /**
@@ -74,14 +74,14 @@ export const api = {
   getStatistics: (subject: string) =>
     fetchAPI<
       import("./types").ApiResponse<import("./types").ISubjectStatistics>
-    >(`/api/scores/statistics/${subject}`),
+    >(`/scores/statistics/${subject}`),
 
   /**
    * Get top 10 students of group A (Math, Physics, Chemistry)
    */
   getTop10GroupA: () =>
     fetchAPI<import("./types").ApiResponse<import("./types").ITopStudent[]>>(
-      `/api/scores/top10/group-a`
+      `/scores/top10/group-a`
     ),
 };
 
