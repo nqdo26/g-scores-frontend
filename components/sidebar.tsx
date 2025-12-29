@@ -60,7 +60,6 @@ export function Sidebar({
 
   return (
     <>
-      {/* Mobile Overlay */}
       {isMobileOpen && (
         <div
           className="fixed inset-0 z-40 bg-background/80 backdrop-blur-sm lg:hidden"
@@ -68,14 +67,12 @@ export function Sidebar({
         />
       )}
 
-      {/* Sidebar */}
       <aside
         className={cn(
           "fixed left-0 top-0 z-50 h-screen w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 transition-transform duration-300 ease-in-out lg:translate-x-0",
           isMobileOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
-        {/* Sidebar Header */}
         <div className="flex h-16 items-center justify-between border-b border-slate-200 dark:border-slate-800 px-6">
           <div className="flex items-center gap-3">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500">
@@ -97,7 +94,6 @@ export function Sidebar({
           </Button>
         </div>
 
-        {/* Navigation */}
         <nav className="space-y-1.5 p-4">
           {navItems.map((item) => {
             const Icon = item.icon;
@@ -132,7 +128,6 @@ export function Sidebar({
           })}
         </nav>
 
-        {/* Sidebar Footer */}
         <div className="absolute bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-800 p-4 bg-slate-50 dark:bg-slate-900/50">
           <div className="text-xs text-slate-600 dark:text-slate-400">
             <p className="font-semibold text-slate-900 dark:text-slate-100">
@@ -143,7 +138,6 @@ export function Sidebar({
         </div>
       </aside>
 
-      {/* Mobile Menu Button */}
       <Button
         variant="outline"
         size="icon"

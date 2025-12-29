@@ -16,7 +16,6 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
   const pathname = usePathname();
 
   const switchLanguage = (locale: string) => {
-    // Remove current locale from pathname and add new locale
     const newPathname = pathname.replace(/^\/(en|vi)/, `/${locale}`);
     router.push(newPathname);
   };

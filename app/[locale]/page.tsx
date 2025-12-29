@@ -14,7 +14,6 @@ import { Statistics } from "@/components/statistics";
 import { Top10GroupA } from "@/components/top10-group-a";
 import { useTranslations } from "next-intl";
 
-// Import messages
 import viMessages from "@/messages/vi.json";
 import enMessages from "@/messages/en.json";
 
@@ -47,7 +46,6 @@ function DashboardContent({ locale }: { locale: string }) {
 
   return (
     <div className="flex min-h-screen">
-      {/* Sidebar */}
       <Sidebar
         activeTab={activeTab}
         onTabChange={setActiveTab}
@@ -55,9 +53,7 @@ function DashboardContent({ locale }: { locale: string }) {
         onMobileToggle={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
       />
 
-      {/* Main Content Area */}
       <div className="flex-1 lg:pl-64">
-        {/* Top Header */}
         <header className="sticky top-0 z-30 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur supports-backdrop-filter:bg-white/80 dark:supports-backdrop-filter:bg-slate-950/80">
           <div className="flex h-16 items-center justify-between px-6">
             <div className="hidden lg:block">
@@ -76,7 +72,6 @@ function DashboardContent({ locale }: { locale: string }) {
           </div>
         </header>
 
-        {/* Page Content */}
         <main className="p-6 lg:p-10 bg-slate-50/50 dark:bg-slate-950/50 min-h-[calc(100vh-4rem)]">
           <div className="mx-auto max-w-7xl">{renderContent()}</div>
         </main>

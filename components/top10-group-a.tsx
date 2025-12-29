@@ -97,7 +97,6 @@ export function Top10GroupA() {
 
   return (
     <div className="space-y-6">
-      {/* Header Card */}
       <Card className="border-slate-200 dark:border-slate-800">
         <CardHeader className="space-y-3">
           <CardTitle className="flex items-center gap-3 text-2xl font-semibold tracking-tight">
@@ -112,7 +111,6 @@ export function Top10GroupA() {
         </CardHeader>
       </Card>
 
-      {/* Info Alert */}
       {!loading && !error && students.length > 0 && (
         <Alert className="border-blue-200 bg-blue-50 dark:bg-blue-950/20 dark:border-blue-900">
           <Star className="h-4 w-4 text-blue-600 dark:text-blue-400" />
@@ -125,7 +123,6 @@ export function Top10GroupA() {
         </Alert>
       )}
 
-      {/* Main Content Card */}
       <Card>
         <CardContent className="pt-6">
           {loading && (

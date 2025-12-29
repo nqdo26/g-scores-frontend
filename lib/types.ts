@@ -1,15 +1,9 @@
-/**
- * Common API response types
- */
-
-// Generic API response wrapper
 export interface ApiResponse<T> {
   success: boolean;
   data: T;
   message?: string;
 }
 
-// Error response
 export interface ApiErrorResponse {
   success: false;
   error: string;
@@ -17,11 +11,6 @@ export interface ApiErrorResponse {
   statusCode: number;
 }
 
-/**
- * G-Scores Project Types - Based on Backend API
- */
-
-// Subject scores
 export interface ISubjectScores {
   toan?: number;
   ngu_van?: number;
@@ -35,7 +24,6 @@ export interface ISubjectScores {
   ma_ngoai_ngu?: string;
 }
 
-// Score check result
 export interface IScoreCheckResult {
   sbd: string;
   scores: {
@@ -51,19 +39,17 @@ export interface IScoreCheckResult {
   };
 }
 
-// Score report by levels
 export interface IScoreReport {
   subject: string;
   levels: {
-    excellent: { count: number; percentage: string }; // >= 8
-    good: { count: number; percentage: string }; // >= 6 & < 8
-    average: { count: number; percentage: string }; // >= 4 & < 6
-    poor: { count: number; percentage: string }; // < 4
+    excellent: { count: number; percentage: string };
+    good: { count: number; percentage: string };
+    average: { count: number; percentage: string };
+    poor: { count: number; percentage: string };
   };
   total: number;
 }
 
-// Subject statistics
 export interface ISubjectStatistics {
   subject: string;
   total: number;
@@ -72,14 +58,13 @@ export interface ISubjectStatistics {
   lowest: number;
   median: number;
   distribution: {
-    excellent: number; // >= 8
-    good: number; // >= 6 & < 8
-    average: number; // >= 4 & < 6
-    poor: number; // < 4
+    excellent: number;
+    good: number;
+    average: number;
+    poor: number;
   };
 }
 
-// Top student
 export interface ITopStudent {
   rank: number;
   sbd: string;
@@ -91,7 +76,6 @@ export interface ITopStudent {
   };
 }
 
-// Subject options for dropdowns
 export type SubjectCode =
   | "toan"
   | "ngu_van"
@@ -102,5 +86,3 @@ export type SubjectCode =
   | "lich_su"
   | "dia_li"
   | "gdcd";
-
-// Add more types based on your backend API models

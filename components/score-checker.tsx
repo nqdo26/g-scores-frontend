@@ -32,7 +32,7 @@ export function ScoreChecker() {
   const tSubjects = useTranslations("subjects");
   const tCommon = useTranslations("common");
 
-  const [sbd, setSbd] = React.useState("");
+  const [uid, setUid] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [result, setResult] = React.useState<IScoreCheckResult | null>(null);
   const [error, setError] = React.useState<string | null>(null);
@@ -41,17 +41,14 @@ export function ScoreChecker() {
     null
   );
 
-  const validateSBD = (value: string): boolean => {
-    // Remove whitespace
+  const validateUID = (value: string): boolean => {
     const cleaned = value.trim();
 
-    // Check if empty
     if (!cleaned) {
       setValidationError(t("validationRequired"));
       return false;
     }
 
-    // Check if it's a valid number with 7-8 digits (database has 7 digits)
     if (!/^\d{7,8}$/.test(cleaned)) {
       setValidationError(t("validationFormat"));
       return false;
@@ -63,14 +60,14 @@ export function ScoreChecker() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setSbd(value);
+    setUid(value);
     if (validationError && value.trim()) {
-      validateSBD(value);
+      validateUID(value);
     }
   };
 
   const handleCheck = async () => {
-    if (!validateSBD(sbd)) return;
+    if (!validateUID(uid)) return;
 
     setLoading(true);
     setError(null);
@@ -78,17 +75,14 @@ export function ScoreChecker() {
     setResult(null);
 
     try {
-      // Send SBD as-is, backend will normalize with padding
-      const normalizedSBD = sbd.trim();
-      const response = await api.checkScore(normalizedSBD);
+      const normalizedUID = uid.trim();
+      const response = await api.checkScore(normalizedUID);
       setResult(response.data);
     } catch (err) {
       if (err instanceof ApiError) {
-        // Show info message for not found, error for other cases
         if (err.status === 404) {
           setNotFound(t("notFound"));
         } else {
-          // For other errors, use generic error message
           setError(t("error"));
         }
       } else {
@@ -127,7 +121,6 @@ export function ScoreChecker() {
 
   return (
     <div className="space-y-6">
-      {/* Search Form */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
@@ -139,13 +132,13 @@ export function ScoreChecker() {
         <CardContent>
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="sbd">{t("studentNumber")}</Label>
+              <Label htmlFor="uid">{t("studentNumber")}</Label>
               <div className="flex gap-3">
                 <div className="flex-1 space-y-1">
                   <Input
-                    id="sbd"
+                    id="uid"
                     placeholder={t("placeholder")}
-                    value={sbd}
+                    value={uid}
                     onChange={handleInputChange}
                     onKeyPress={handleKeyPress}
                     className={validationError ? "border-destructive" : ""}
@@ -157,7 +150,7 @@ export function ScoreChecker() {
                     </p>
                   )}
                 </div>
-                <Button onClick={handleCheck} disabled={loading || !sbd.trim()}>
+                <Button onClick={handleCheck} disabled={loading || !uid.trim()}>
                   {loading ? (
                     <div className="flex items-center gap-2">
                       <LoadingSpinner size="sm" className="border-white" />
@@ -176,7 +169,6 @@ export function ScoreChecker() {
         </CardContent>
       </Card>
 
-      {/* Error Alert */}
       {error && (
         <Alert variant="destructive">
           <XCircle className="h-4 w-4" />
@@ -185,7 +177,6 @@ export function ScoreChecker() {
         </Alert>
       )}
 
-      {/* Not Found Info Alert */}
       {notFound && (
         <Alert className="border-amber-200 bg-amber-50 dark:bg-amber-950/20 dark:border-amber-900">
           <AlertCircle className="h-4 w-4 text-amber-600 dark:text-amber-400" />
@@ -198,7 +189,6 @@ export function ScoreChecker() {
         </Alert>
       )}
 
-      {/* Success Result */}
       {result && (
         <div className="space-y-6">
           <Alert className="border-emerald-200 bg-emerald-50 dark:bg-emerald-950/20 dark:border-emerald-900">
@@ -212,7 +202,6 @@ export function ScoreChecker() {
             </AlertDescription>
           </Alert>
 
-          {/* Scores Table */}
           <Card>
             <CardHeader>
               <CardTitle>{t("scores")}</CardTitle>

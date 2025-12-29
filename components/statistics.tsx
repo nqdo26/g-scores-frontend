@@ -50,10 +50,10 @@ const subjects: SubjectCode[] = [
 ];
 
 const COLORS = {
-  excellent: "hsl(142, 71%, 45%)", // Emerald green
-  good: "hsl(217, 91%, 60%)", // Blue
-  average: "hsl(45, 93%, 58%)", // Amber
-  poor: "hsl(12, 76%, 61%)", // Orange-red
+  excellent: "hsl(142, 71%, 45%)",
+  good: "hsl(217, 91%, 60%)",
+  average: "hsl(45, 93%, 58%)",
+  poor: "hsl(12, 76%, 61%)",
 };
 
 export function Statistics() {
@@ -251,7 +251,6 @@ export function Statistics() {
                   <TabsTrigger value="line">{t("lineChart")}</TabsTrigger>
                 </TabsList>
 
-                {/* Bar Chart */}
                 <TabsContent value="bar">
                   <ResponsiveContainer width="100%" height={400}>
                     <BarChart data={chartData}>
@@ -283,7 +282,6 @@ export function Statistics() {
                   </ResponsiveContainer>
                 </TabsContent>
 
-                {/* Pie Chart */}
                 <TabsContent value="pie">
                   <ResponsiveContainer width="100%" height={400}>
                     <PieChart>
@@ -312,7 +310,6 @@ export function Statistics() {
                   </ResponsiveContainer>
                 </TabsContent>
 
-                {/* Line Chart */}
                 <TabsContent value="line">
                   <ResponsiveContainer width="100%" height={400}>
                     <LineChart data={chartData}>
@@ -345,7 +342,6 @@ export function Statistics() {
                 </TabsContent>
               </Tabs>
 
-              {/* Summary Stats */}
               <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {chartData.map((item) => (
                   <div
